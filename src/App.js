@@ -1,26 +1,57 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// import React, { Component } from 'react' 、、使用rcc 使用class的方式创建组件 安装es7后
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+// export default class APP extends Component {
+//     render() {
+//         return (
+//             <div>
+                
+//             </div>
+//         )
+//     }
+// }
+// import React from 'react'  rfc使用function的方式穿件组件
+
+// export default function APP() {
+//     return (
+//         <div>
+            
+//         </div>
+//     )
+// }
+//Fragment相当于一个空标签，还可以直接写空标签<></>
+import React, { Component , Fragment} from 'react'
+import {
+    TodoHeader,
+    TodoInput,
+    TodoItem
+}from './components'
+const _json={
+    header:'我是头部',
+    inputBtn:'点击',
+    list:[
+        {
+            id:1,
+            name:'liming'
+        },
+        {
+            id:2,
+            name:'chenbiao'
+        },
+        {
+            id:3,
+            name:'xiaohua'
+        }
+    ]
 }
 
-export default App;
+export default class APP extends Component {
+    render() {
+        return (
+            <Fragment>
+              <TodoHeader  />
+              <TodoInput />
+              <TodoItem></TodoItem>
+            </Fragment>
+        )
+    }
+}
