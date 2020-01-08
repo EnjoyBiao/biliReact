@@ -1,3 +1,7 @@
+/**
+ * 统一导出文件
+ * */
+
 // 第一种导出方式
 
 
@@ -12,4 +16,5 @@
 
 export {default as TodoHeader } from './TodoHeader'
 export {default as TodoInput } from './TodoInput'
-export {default as TodoItem}   from './TodoItem'
+export {default as TodoList}   from './TodoList'
+export {default as Like}   from './Like'
