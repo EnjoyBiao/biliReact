@@ -1,7 +1,11 @@
 import React, {Component, createRef} from 'react'
 import {useState,useEffect } from 'react'
 import {wrapContext} from "../../common/js/common";
+import PropTypes from  'prop-types'
 export default class TodoInput extends Component {
+    // static PropTypes={
+    //
+    // }
     constructor() {
         super()
         this.state = {
@@ -13,7 +17,7 @@ export default class TodoInput extends Component {
         this.inputDom = createRef();
     }
 
-    handlerInput = (e) => {//调用箭头函数不用bind，this
+    handlerInput = (e) => {//调用箭头函数不用bind
         this.setState({
                 inputValue: e.currentTarget.value
             }
@@ -94,7 +98,7 @@ function HookExample() {
     );
 }
 
-//绑定事件的几种方式 因为有this的关系
+//绑定事件的几种方式 因为存在this的关系
 //1.事件直接就是用箭头函数
 //使用函数需要bind(this),可以直接在dom元素中bing,ru  如：<button onClick={this.btnClick.bind(this)}>{this.props.btn}</button>
 //但是不推荐，每次render的时候都要去绑定，推荐在构造函数中bind，因为构造函数只是执行一次， 如上,注意对应,

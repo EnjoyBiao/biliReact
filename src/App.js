@@ -35,7 +35,7 @@ export default class APP extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            header: '待办事项',
+            header: '标签内传递--待办事项',
             inputBtn: '点击',
             article: '<h2>我是富文本</h2>',
             list: [
@@ -63,7 +63,7 @@ export default class APP extends Component {
         }
     }
 
-    addTodio = (value) => {//注意使用的是箭头函数，方法this取不到
+    addTodio = (value) => {//注意使用的是箭头函数，使用方法的话this是取不到的
         this.setState({
             list: this.state.list.concat(//这里不能用push，因为push有返回值是数组的长度，用map也可以；要使用可以先拷贝[...]
                 {

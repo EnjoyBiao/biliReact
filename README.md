@@ -11,15 +11,30 @@
     title:PropTypes.string,
     y:PropTypes.number,
 }  
+类组件中校验，直接写在类中，查看input组件
+组件数据状态的两种来源：{
+  第一种：来自外部传入的，props；
+  组件内部私有的：state(只有类组件组件才有state，所有类式组件也叫有状态组件，反之，函数式组件就是无状态组件)
+       1.直接state={数据}
+       2.写在构造方法里面，constractor(){
+       super()
+          注意这里是this.state={}
+          
+       }
+}
 注意：有状态组件：类式组件 
            constructor(){
                  super()
               this._json={}
       无状态组件：函数式组件
       受控组件：传递的参数，子组件无法修改，只能通过父级改变参数
- 对于富文本的渲染：dangerouslySetInnerHTML={{__html: props.fu}}}     
- 循环展开项 传递{...item}
-2.组件更新：state、setState发生改变的时候setState参数是函数时候得要retrun{}；两个参数，一个是改变前state，
+ 对于后端返回的富文本的渲染：dangerouslySetInnerHTML={{__html: props.fu}}} 
+ 循环渲染：
+  {
+    list.map((item)=><div>{item}</div>)
+  }  
+ 循环展开项 传递使用{...item}
+2.组件更新（like组件）：state、setState发生改变的时候setState参数是函数时候得要retrun{}；两个参数，一个是改变前state，
   另外一个改变后的state值
     this.setState(({count}) => {
                 return {
@@ -28,8 +43,15 @@
             },()=>{
             //修改后的值
             });
-3.标签事件，如果是函数，需要bind（this）一般在构造函数中绑定；或者使用箭头函数
+3.标签事件（input组件），如果是函数，需要bind（this）一般在构造函数中绑定；或者使用箭头函数
+  a.可以直接写在标签里面，如:<button  onClick={()=>{
+      、、操作内容
+      但是 这种写法，不健康，每次render的时候，都给我创建一个函数；所以提出去（如果bind，就使用箭头函数）
+  }}></button>
 3.方法的传递，注意this，在父级使用箭头函数
+ref的使用：
+    在react中获取DOM，使用ref，只是要引入内置的方法createRef（使用引入），一般在constructor中创建
+      this.inputDom = createRef();
 4.周期函数的使用：
 shouldComponentUpdate();为了防止循环渲染render，可以在里面进行相关判断。   
 5. 组件可以接受任意 props，包括基本数据类型，React 元素以及函数。
